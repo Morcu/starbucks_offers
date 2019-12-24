@@ -246,7 +246,7 @@ For this approach that only has the offers one-hot encoded different clasifiers 
 
 6 inputs 2 hidden layers (16,32) and 1 oputputs the top rewarded offer by user
 
-<img src="img/6_16_32_10.png"/>
+<img src="img/6_16_32_1.png"/>
 
 - criterion -->Binary Cross Entropy between the target and the output (BCELoss)
 - optimizer --> Adam
