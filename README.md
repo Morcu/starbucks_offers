@@ -180,6 +180,10 @@ For the labels 3 encodeds are going to be made:
     - 1.1)  the one hot encoded has also the number of completed offers
 - 2) The label with the maximum reward
 
+As the previous datasets were not giving good results, the problem and the input were re-engineered. In this case, merging the offers data in the independent variables along with the demographic features is chosen so a binary classifier is made, this classifier specifies either the offer will be successful (viewed and completed) or not successful (ignored).
+
+- 4) Demographic features + hot-encoded completed offers
+
 **1)**
 
 <img src="img/y_dataset.png"/>
@@ -201,6 +205,10 @@ For example if an offer with a reward of 5 is compoleted 2 times it will be choo
 
 <img src="img/y_dataset2.png"/>
 
+**4)**
+
+
+<img src="img/y_dataset4.png"/>
 
 ## Train
 
@@ -272,6 +280,28 @@ Test loss: 0.45583873448677675
 avg / total       0.29      0.40      0.25      2965
 
 
+
+## Second Training
+
+As the previous solutions didn't get good results a new training is made, this training  has as input the demographic inputs and the offers' ids so the total input is the features and the offer that is going to be tested.
+
+The output will be if the offer will be completed or not
+
+So a binary clasifier is going to be build
+
+
+**xgboost clasifier**
+
+After re-engineer the problem changing the input and making it a binary clasifier the values for the score are goods.
+
+             precision    recall  f1-score   support
+
+        0.0       0.88      1.00      0.94     26068
+        1.0       0.00      0.00      0.00      3582
+
+avg / total       0.77      0.88      0.82     29650
+
+
 # Conclusion
 
 The models do not perform well in this clasification task using choosen input, although all clasifiers gives the same score
@@ -279,6 +309,9 @@ The models do not perform well in this clasification task using choosen input, a
 For the ann an exploratory could been made with the **loss function and the activation function used in the output layer**.
 
 For this kind of problems **traditional machine learning algorithms such as gradient boosting techniques (XGBoost, LightGBM..etc) will get better results and performance.**
+
+
+If you have issues related to the solution to the problem a **re-engineer should be considered** in this case the problem was changed to a **binary clasifier** that tells if a certain user (**only using its demographic values**) will complete the offer or not
 
 
 # Code
